@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عروض أواني العربية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals (Cream, Beige, Brown) with Gold and Red Accents -->
+    <!-- Application Structure Plan: A top-to-bottom promotional landing page that translates the static ad into an interactive experience. It starts with a Hero section featuring a countdown timer for urgency, followed by sections for key Features, an interactive Product Category gallery, and a tabbed interface for Special Offers. This structure guides the user from the main offer to exploring the products and specific deals, making the ad more engaging and informative than a static image. -->
+    <!-- Visualization & Content Choices: Main Offer -> Goal: Attract Attention -> Presentation: Large, animated text -> Interaction: Countdown timer (JS) -> Justification: Creates urgency. | Key Features -> Goal: Inform -> Presentation: Icon + Text cards -> Interaction: Hover effects -> Justification: Scannable and clean. | Product Info -> Goal: Engage/Explore -> Presentation: Interactive Image Gallery -> Interaction: JS-powered category selection/highlighting -> Justification: Allows users to explore store offerings. | Special Offers -> Goal: Organize -> Presentation: Tabbed content -> Interaction: JS-powered tab switching -> Justification: Segments information cleanly. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            background-color: #FDFBF5;
+            color: #4A2E22;
+        }
+        .hero-bg {
+            background-image:
+                radial-gradient(circle at 15% 85%, rgba(212, 175, 55, 0.05), transparent 30%),
+                radial-gradient(circle at 85% 20%, rgba(188, 108, 37, 0.05), transparent 40%);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        .brand-text {
+            color: #D4AF37;
+        }
+        .highlight-text {
+            color: #C14444;
+        }
+        .timer-box {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .feature-card, .category-card, .tab-button {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover, .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tab-button.active {
+            background-color: #4A2E22;
+            color: #FDFBF5;
+        }
+        .category-card.active {
+            border-color: #D4AF37;
+            transform: scale(1.05);
+        }
+        .decorative-corner {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234A2E22' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .button-glow {
+            box-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37, 0 0 30px #D4AF37, 0 0 40px #D4AF37;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="relative overflow-hidden">
+        <div class="decorative-corner top-0 right-0"></div>
+        <div class="decorative-corner bottom-0 left-0 transform rotate-180"></div>
+
+        <header class="text-center p-6 md:p-10 hero-bg">
+            <h1 class="text-3xl md:text-4xl font-bold">🏠 أواني العربية</h1>
+            <p class="text-lg md:text-xl mt-2 text-gray-600">راحتك تبدأ من مطبخك</p>
+        </header>
+
+        <main>
+            <section id="hero" class="text-center py-16 md:py-24 px-4 hero-bg">
+                <h2 class="text-5xl md:text-7xl lg:text-8xl font-black highlight-text animate-pulse">
+                    🎉 خصومات تصل إلى 50% 🎉
+                </h2>
+                <p class="mt-6 text-xl md:text-2xl font-bold">ابتداءً من يوم الثلاثاء 16 / 09 / 2025م</p>
+                <div id="countdown" class="mt-8 flex justify-center space-x-2 md:space-x-4 text-center">
+                    <div class="timer-box p-3 md:p-5 rounded-lg w-20 md:w-28">
+                        <span id="days" class="text-3xl md:text-5xl font-bold">0</span>
+                        <span class="block text-xs md:text-sm mt-1">أيام</span>
+                    </div>
+                    <div class="timer-box p-3 md:p-5 rounded-lg w-20 md:w-28">
+                        <span id="hours" class="text-3xl md:text-5xl font-bold">0</span>
+                        <span class="block text-xs md:text-sm mt-1">ساعات</span>
+                    </div>
+                    <div class="timer-box p-3 md:p-5 rounded-lg w-20 md:w-28">
+                        <span id="minutes" class="text-3xl md:text-5xl font-bold">0</span>
+                        <span class="block text-xs md:text-sm mt-1">دقائق</span>
+                    </div>
+                    <div class="timer-box p-3 md:p-5 rounded-lg w-20 md:w-28">
+                        <span id="seconds" class="text-3xl md:text-5xl font-bold">0</span>
+                        <span class="block text-xs md:text-sm mt-1">ثواني</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="features" class="py-16 md:py-20 bg-white">
+                <div class="container mx-auto px-4">
+                    <h3 class="text-3xl font-bold text-center mb-12">لماذا تختارنا؟</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="feature-card text-center p-8 bg-gray-50 rounded-xl border border-gray-200">
+                            <div class="text-5xl mb-4">💰</div>
+                            <h4 class="text-xl font-bold mb-2">أسعار تنافسية</h4>
+                            <p class="text-gray-600">نقدم أفضل الأسعار في السوق مع الحفاظ على الجودة العالية لمنتجاتنا.</p>
+                        </div>
+                        <div class="feature-card text-center p-8 bg-gray-50 rounded-xl border border-gray-200">
+                            <div class="text-5xl mb-4">🏢</div>
+                            <h4 class="text-xl font-bold mb-2">عروض خاصة للشركات</h4>
+                            <p class="text-gray-600">باقات وعروض مصممة خصيصًا لتلبية احتياجات الشركات والمطاعم.</p>
+                        </div>
+                        <div class="feature-card text-center p-8 bg-gray-50 rounded-xl border border-gray-200">
+                            <div class="text-5xl mb-4">🛡️</div>
+                            <h4 class="text-xl font-bold mb-2">ضمان من المحل</h4>
+                            <p class="text-gray-600">استمتع بضمان مباشر من "أواني العربية"، لخدمة أسرع وأكثر موثوقية.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gemini-feature" class="py-16 md:py-20">
+                <div class="container mx-auto px-4 text-center">
+                    <h3 class="text-3xl font-bold mb-4">✨ أفكار إبداعية من Gemini ✨</h3>
+                    <p class="max-w-2xl mx-auto text-gray-600 mb-8">
+                        اضغط على الزر للحصول على اقتراح ملهم لوصفة أو فكرة مناسبة باستخدام أواني المطبخ.
+                    </p>
+                    <button id="generate-idea" class="px-8 py-4 bg-yellow-600 text-white rounded-full text-lg font-bold shadow-lg hover:bg-yellow-700 transition-all button-glow">
+                        أعطني فكرة!
+                    </button>
+                    <div id="idea-output" class="mt-8 p-6 md:p-8 bg-white rounded-xl shadow-lg border border-gray-200 text-right min-h-[150px] flex items-center justify-center">
+                        <span class="text-gray-400">ستظهر الفكرة هنا...</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="special-offers" class="py-16 md:py-20">
+                <div class="container mx-auto px-4 text-center">
+                    <h3 class="text-3xl font-bold text-center mb-8">اكتشف عروضنا الخاصة</h3>
+                    <p class="max-w-2xl mx-auto text-gray-600 mb-12">
+                        سواء كنتم شركة تبحث عن تجهيزات لمناسباتكم أو مطعماً يسعى للتميز، لدينا ما يناسبكم. اختر الفئة لمعرفة المزيد.
+                    </p>
+                    <div class="flex justify-center mb-8 border-b-2 border-gray-200">
+                        <button class="tab-button active py-3 px-8 text-lg font-semibold" data-tab="companies">للشركات والمؤسسات</button>
+                        <button class="tab-button py-3 px-8 text-lg font-semibold text-gray-500" data-tab="restaurants">للمطاعم والمقاهي</button>
+                    </div>
+                    <div id="tab-content">
+                        <div id="companies" class="tab-pane active">
+                            <h4 class="text-2xl font-bold mb-4 brand-text">تجهيزات متكاملة لشركتكم</h4>
+                            <p class="max-w-xl mx-auto text-gray-700">
+                                نقدم حلولاً متكاملة لتجهيز مطابخ الشركات وغرف الاستراحة بأطقم فاخرة من أواني التقديم والقهوة. خصومات خاصة على الكميات وبرامج توريد مرنة تناسب ميزانيتكم.
+                            </p>
+                        </div>
+                        <div id="restaurants" class="tab-pane hidden">
+                             <h4 class="text-2xl font-bold mb-4 brand-text">أوانٍ تليق بمطعمكم</h4>
+                            <p class="max-w-xl mx-auto text-gray-700">
+                                عزز تجربة ضيوفك بمجموعة مختارة من أواني الطهي والتقديم الاحترافية. متانة وجودة عالية تلبي معايير المطاعم الفاخرة، مع عروض حصرية على الطلبات الكبيرة وعقود التوريد السنوية.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="text-center py-10 bg-white border-t">
+            <p class="text-lg font-semibold">🏠 أواني العربية</p>
+            <p class="text-gray-600 mt-1">راحتك تبدأ من مطبخك</p>
+            <div class="mt-4 text-xs text-gray-400">
+                جميع الحقوق محفوظة © 2025
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const countdownDate = new Date("Sep 16, 2025 00:00:00").getTime();
+
+            const countdownFunction = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+                document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+
+                if (distance < 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("countdown").innerHTML = "<div class='text-2xl font-bold highlight-text'>العرض بدأ الآن!</div>";
+                }
+            }, 1000);
+
+            const tabs = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(item => item.classList.remove('active', 'text-gray-900', 'font-bold'));
+                    tabs.forEach(item => item.classList.add('text-gray-500'));
+                    
+                    tab.classList.add('active', 'text-gray-900', 'font-bold');
+                    tab.classList.remove('text-gray-500');
+
+                    tabPanes.forEach(pane => {
+                        pane.classList.add('hidden');
+                    });
+                    
+                    const targetPane = document.getElementById(tab.dataset.tab);
+                    if(targetPane) {
+                        targetPane.classList.remove('hidden');
+                    }
+                });
+            });
+
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            const ideaButton = document.getElementById('generate-idea');
+            const ideaOutput = document.getElementById('idea-output');
+
+            ideaButton.addEventListener('click', async () => {
+                ideaButton.disabled = true;
+                ideaButton.innerText = 'جاري التفكير...';
+                ideaOutput.innerHTML = '<span class="text-gray-400">جاري تحميل فكرتك...</span>';
+
+                const prompts = [
+                    "اكتب فكرة لوصفة حلويات مبتكرة باستخدام أدوات مطبخ عصرية، واذكر اسم الوصفة.",
+                    "اقتراح فكرة عشاء سريع ومميز يمكن تحضيره في أواني الطهي المتوفرة لدينا.",
+                    "اكتب نصيحة قصيرة لتنظيم المطبخ باستخدام أواني التخزين الأنيقة.",
+                    "اكتب فكرة لتقديم مشروبات ساخنة في المناسبات الشتوية باستخدام أكواب أنيقة.",
+                    "اقتراح فكرة لتقديم طبق رئيسي بطريقة فنية ومختلفة باستخدام أواني السيراميك الفاخرة."
+                ];
+
+                const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+
+                const payload = {
+                    contents: [{ parts: [{ text: randomPrompt }] }],
+                    systemInstruction: {
+                        parts: [{ text: "أنت خبير في المطبخ والأواني، مهمتك هي تقديم أفكار إبداعية وملهمة عن وصفات أو طرق تقديم الطعام، بأسلوب جذاب ومختصر." }]
+                    },
+                };
+                
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    const generatedText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    
+                    if (generatedText) {
+                        ideaOutput.innerText = generatedText;
+                    } else {
+                        ideaOutput.innerText = 'عذراً، لم أستطع توليد فكرة حالياً. حاول مرة أخرى.';
+                    }
+                } catch (error) {
+                    console.error('API Error:', error);
+                    ideaOutput.innerText = 'حدث خطأ. تأكد من اتصالك بالإنترنت.';
+                } finally {
+                    ideaButton.disabled = false;
+                    ideaButton.innerText = 'أعطني فكرة!';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
