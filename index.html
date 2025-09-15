@@ -7,16 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Warm Neutrals (Cream, Beige, Brown) with Gold and Red Accents -->
-    <!-- Application Structure Plan: A top-to-bottom promotional landing page that translates the static ad into an interactive experience. It starts with a Hero section featuring a countdown timer for urgency, followed by sections for key Features, an interactive Product Category gallery, and a tabbed interface for Special Offers. This structure guides the user from the main offer to exploring the products and specific deals, making the ad more engaging and informative than a static image. -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&family=Playfair+Display:wght@400;700&family=Amiri:wght@700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals (Cream, Beige, Brown) with Gold and Red Accents) -->
+    <!-- Application Structure Plan: A top-to-bottom promotional landing page that translates the static ad into an interactive experience. It starts with a Hero section featuring a countdown timer for urgency, followed by sections for key Features, an an interactive Product Category gallery, and a tabbed interface for Special Offers. This structure guides the user from the main offer to exploring the products and specific deals, making the ad more engaging and informative than a static image. -->
     <!-- Visualization & Content Choices: Main Offer -> Goal: Attract Attention -> Presentation: Large, animated text -> Interaction: Countdown timer (JS) -> Justification: Creates urgency. | Key Features -> Goal: Inform -> Presentation: Icon + Text cards -> Interaction: Hover effects -> Justification: Scannable and clean. | Product Info -> Goal: Engage/Explore -> Presentation: Interactive Image Gallery -> Interaction: JS-powered category selection/highlighting -> Justification: Allows users to explore store offerings. | Special Offers -> Goal: Organize -> Presentation: Tabbed content -> Interaction: JS-powered tab switching -> Justification: Segments information cleanly. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Noto Kufi Arabic', sans-serif;
-            background-color: #FDFBF5;
-            color: #4A2E22;
+            background-color: #006030;
+            color: #FDFBF5;
+            position: relative;
+        }
+        .english-font {
+            font-family: 'Playfair Display', serif;
         }
         .hero-bg {
             background-image:
@@ -29,7 +33,7 @@
             color: #D4AF37;
         }
         .highlight-text {
-            color: #C14444;
+            color: #D4AF37;
         }
         .timer-box {
             background-color: rgba(255, 255, 255, 0.5);
@@ -44,7 +48,7 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         .tab-button.active {
-            background-color: #4A2E22;
+            background-color: #D4AF37;
             color: #FDFBF5;
         }
         .category-card.active {
@@ -56,7 +60,7 @@
             width: 50px;
             height: 50px;
             opacity: 0.1;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234A2E22' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FDFBF5' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
         }
         .button-glow {
             box-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37, 0 0 30px #D4AF37, 0 0 40px #D4AF37;
@@ -70,8 +74,13 @@
         <div class="decorative-corner bottom-0 left-0 transform rotate-180"></div>
 
         <header class="text-center p-6 md:p-10 hero-bg">
-            <h1 class="text-3xl md:text-4xl font-bold">🏠 أواني العربية</h1>
-            <p class="text-lg md:text-xl mt-2 text-gray-600">راحتك تبدأ من مطبخك</p>
+            <div class="flex items-center justify-center gap-4">
+                <img src="https://i.ibb.co/8D6KhP8C/5486-logo.png" alt="شعار أواني العربية" class="w-24 md:w-32">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold">أواني العربية</h1>
+                    <p class="text-xl md:text-2xl mt-1 text-gray-50 english-font">Arabian Household</p>
+                </div>
+            </div>
         </header>
 
         <main>
@@ -79,45 +88,45 @@
                 <h2 class="text-5xl md:text-7xl lg:text-8xl font-black highlight-text animate-pulse">
                     🎉 خصومات تصل إلى 50% 🎉
                 </h2>
-                <p class="mt-6 text-xl md:text-2xl font-bold">ابتداءً من يوم الثلاثاء 16 / 09 / 2025م</p>
+                <p class="mt-6 text-xl md:text-2xl font-bold text-gray-200">ابتداءً من يوم الثلاثاء 16 / 09 / 2025م</p>
                 <div id="countdown" class="mt-8 flex justify-center space-x-2 md:space-x-4 text-center">
                     <div class="timer-box p-3 md:p-5 rounded-lg w-20 md:w-28">
-                        <span id="days" class="text-3xl md:text-5xl font-bold">0</span>
-                        <span class="block text-xs md:text-sm mt-1">أيام</span>
+                        <span id="days" class="text-3xl md:text-5xl font-bold text-gray-800">0</span>
+                        <span class="block text-xs md:text-sm mt-1 text-gray-600">أيام</span>
                     </div>
                     <div class="timer-box p-3 md:p-5 rounded-lg w-20 md:w-28">
-                        <span id="hours" class="text-3xl md:text-5xl font-bold">0</span>
-                        <span class="block text-xs md:text-sm mt-1">ساعات</span>
+                        <span id="hours" class="text-3xl md:text-5xl font-bold text-gray-800">0</span>
+                        <span class="block text-xs md:text-sm mt-1 text-gray-600">ساعات</span>
                     </div>
                     <div class="timer-box p-3 md:p-5 rounded-lg w-20 md:w-28">
-                        <span id="minutes" class="text-3xl md:text-5xl font-bold">0</span>
-                        <span class="block text-xs md:text-sm mt-1">دقائق</span>
+                        <span id="minutes" class="text-3xl md:text-5xl font-bold text-gray-800">0</span>
+                        <span class="block text-xs md:text-sm mt-1 text-gray-600">دقائق</span>
                     </div>
                     <div class="timer-box p-3 md:p-5 rounded-lg w-20 md:w-28">
-                        <span id="seconds" class="text-3xl md:text-5xl font-bold">0</span>
-                        <span class="block text-xs md:text-sm mt-1">ثواني</span>
+                        <span id="seconds" class="text-3xl md:text-5xl font-bold text-gray-800">0</span>
+                        <span class="block text-xs md:text-sm mt-1 text-gray-600">ثواني</span>
                     </div>
                 </div>
             </section>
             
-            <section id="features" class="py-16 md:py-20 bg-white">
-                <div class="container mx-auto px-4">
+            <section id="features" class="py-16 md:py-20 bg-gray-800 text-gray-50">
+                <div class="container mx-auto px-4 max-w-4xl">
                     <h3 class="text-3xl font-bold text-center mb-12">لماذا تختارنا؟</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="feature-card text-center p-8 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="feature-card text-center p-6 bg-gray-700 rounded-xl border border-gray-600">
                             <div class="text-5xl mb-4">💰</div>
                             <h4 class="text-xl font-bold mb-2">أسعار تنافسية</h4>
-                            <p class="text-gray-600">نقدم أفضل الأسعار في السوق مع الحفاظ على الجودة العالية لمنتجاتنا.</p>
+                            <p class="text-gray-300">نقدم أفضل الأسعار في السوق مع الحفاظ على الجودة العالية لمنتجاتنا.</p>
                         </div>
-                        <div class="feature-card text-center p-8 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="feature-card text-center p-6 bg-gray-700 rounded-xl border border-gray-600">
                             <div class="text-5xl mb-4">🏢</div>
                             <h4 class="text-xl font-bold mb-2">عروض خاصة للشركات</h4>
-                            <p class="text-gray-600">باقات وعروض مصممة خصيصًا لتلبية احتياجات الشركات والمطاعم.</p>
+                            <p class="text-gray-300">باقات وعروض مصممة خصيصًا لتلبية احتياجات الشركات والمطاعم.</p>
                         </div>
-                        <div class="feature-card text-center p-8 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="feature-card text-center p-6 bg-gray-700 rounded-xl border border-gray-600">
                             <div class="text-5xl mb-4">🛡️</div>
                             <h4 class="text-xl font-bold mb-2">ضمان من المحل</h4>
-                            <p class="text-gray-600">استمتع بضمان مباشر من "أواني العربية"، لخدمة أسرع وأكثر موثوقية.</p>
+                            <p class="text-gray-300">استمتع بضمان مباشر من "أواني العربية"، لخدمة أسرع وأكثر موثوقية.</p>
                         </div>
                     </div>
                 </div>
@@ -126,38 +135,41 @@
             <section id="gemini-feature" class="py-16 md:py-20">
                 <div class="container mx-auto px-4 text-center">
                     <h3 class="text-3xl font-bold mb-4">✨ أفكار إبداعية من Gemini ✨</h3>
-                    <p class="max-w-2xl mx-auto text-gray-600 mb-8">
+                    <p class="max-w-2xl mx-auto text-gray-200 mb-8">
                         اضغط على الزر للحصول على اقتراح ملهم لوصفة أو فكرة مناسبة باستخدام أواني المطبخ.
                     </p>
                     <button id="generate-idea" class="px-8 py-4 bg-yellow-600 text-white rounded-full text-lg font-bold shadow-lg hover:bg-yellow-700 transition-all button-glow">
                         أعطني فكرة!
                     </button>
-                    <div id="idea-output" class="mt-8 p-6 md:p-8 bg-white rounded-xl shadow-lg border border-gray-200 text-right min-h-[150px] flex items-center justify-center">
+                    <div id="idea-output" class="mt-8 p-6 md:p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-600 text-right min-h-[150px] flex items-center justify-center">
                         <span class="text-gray-400">ستظهر الفكرة هنا...</span>
                     </div>
+                    <a id="email-idea-link" href="#" class="mt-4 px-6 py-3 bg-gray-700 text-gray-50 rounded-full font-bold shadow-lg hover:bg-gray-600 transition-all hidden">
+                        <span class="ml-2">✉️</span> أرسل الفكرة إلى بريدي
+                    </a>
                 </div>
             </section>
 
             <section id="special-offers" class="py-16 md:py-20">
                 <div class="container mx-auto px-4 text-center">
                     <h3 class="text-3xl font-bold text-center mb-8">اكتشف عروضنا الخاصة</h3>
-                    <p class="max-w-2xl mx-auto text-gray-600 mb-12">
+                    <p class="max-w-2xl mx-auto text-gray-200 mb-12">
                         سواء كنتم شركة تبحث عن تجهيزات لمناسباتكم أو مطعماً يسعى للتميز، لدينا ما يناسبكم. اختر الفئة لمعرفة المزيد.
                     </p>
-                    <div class="flex justify-center mb-8 border-b-2 border-gray-200">
+                    <div class="flex justify-center mb-8 border-b-2 border-gray-500">
                         <button class="tab-button active py-3 px-8 text-lg font-semibold" data-tab="companies">للشركات والمؤسسات</button>
-                        <button class="tab-button py-3 px-8 text-lg font-semibold text-gray-500" data-tab="restaurants">للمطاعم والمقاهي</button>
+                        <button class="tab-button py-3 px-8 text-lg font-semibold text-gray-200" data-tab="restaurants">للمطاعم والمقاهي</button>
                     </div>
                     <div id="tab-content">
                         <div id="companies" class="tab-pane active">
                             <h4 class="text-2xl font-bold mb-4 brand-text">تجهيزات متكاملة لشركتكم</h4>
-                            <p class="max-w-xl mx-auto text-gray-700">
+                            <p class="max-w-xl mx-auto text-gray-200">
                                 نقدم حلولاً متكاملة لتجهيز مطابخ الشركات وغرف الاستراحة بأطقم فاخرة من أواني التقديم والقهوة. خصومات خاصة على الكميات وبرامج توريد مرنة تناسب ميزانيتكم.
                             </p>
                         </div>
                         <div id="restaurants" class="tab-pane hidden">
                              <h4 class="text-2xl font-bold mb-4 brand-text">أوانٍ تليق بمطعمكم</h4>
-                            <p class="max-w-xl mx-auto text-gray-700">
+                            <p class="max-w-xl mx-auto text-gray-200">
                                 عزز تجربة ضيوفك بمجموعة مختارة من أواني الطهي والتقديم الاحترافية. متانة وجودة عالية تلبي معايير المطاعم الفاخرة، مع عروض حصرية على الطلبات الكبيرة وعقود التوريد السنوية.
                             </p>
                         </div>
@@ -167,20 +179,29 @@
 
         </main>
         
-        <footer class="text-center py-10 bg-white border-t">
+        <footer class="text-center py-10 hero-bg border-t border-gray-700">
              <div class="container mx-auto px-4">
-                <h3 class="text-2xl font-bold mb-4">تواصل معنا</h3>
+                <h3 class="text-2xl font-bold mb-4 text-gray-50">تواصل معنا</h3>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-lg">
-                    <a href="tel:+966551234567" class="hover:text-yellow-600 transition-colors">
-                        📞 +966551234567
+                    <a href="tel:+966559999659" class="hover:text-yellow-600 transition-colors">
+                        📞 +966559999659
                     </a>
-                    <a href="https://wa.me/966551234567" class="hover:text-yellow-600 transition-colors" target="_blank">
+                    <a href="https://wa.me/966559999659" class="hover:text-yellow-600 transition-colors" target="_blank">
                         📱 واتساب
                     </a>
+                    <a href="https://maps.app.goo.gl/rGe8tC2SSZpxpPkW6?g_st=ipc" class="hover:text-yellow-600 transition-colors" target="_blank">
+                        📍 تفضل بزيارتنا
+                    </a>
                 </div>
-                <p class="mt-6 text-lg font-semibold">🏠 أواني العربية</p>
-                <p class="text-gray-600 mt-1">راحتك تبدأ من مطبخك</p>
-                <div class="mt-4 text-xs text-gray-400">
+                <div class="flex items-center justify-center mt-6 gap-4">
+                    <img src="https://i.ibb.co/8D6KhP8C/5486-logo.png" alt="شعار أواني العربية" class="w-16 md:w-20">
+                    <div>
+                        <p class="text-xl md:text-2xl font-bold">أواني العربية</p>
+                        <p class="text-sm md:text-lg mt-1 text-gray-50 english-font">Arabian Household</p>
+                    </div>
+                </div>
+                <p class="text-gray-400 mt-2">راحتك تبدأ من مطبخك</p>
+                <div class="mt-4 text-xs text-gray-500">
                     جميع الحقوق محفوظة © 2025
                 </div>
             </div>
@@ -217,11 +238,11 @@
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    tabs.forEach(item => item.classList.remove('active', 'text-gray-900', 'font-bold'));
-                    tabs.forEach(item => item.classList.add('text-gray-500'));
+                    tabs.forEach(item => item.classList.remove('active', 'text-gray-50', 'font-bold'));
+                    tabs.forEach(item => item.classList.add('text-gray-200'));
                     
-                    tab.classList.add('active', 'text-gray-900', 'font-bold');
-                    tab.classList.remove('text-gray-500');
+                    tab.classList.add('active', 'text-gray-50', 'font-bold');
+                    tab.classList.remove('text-gray-200');
 
                     tabPanes.forEach(pane => {
                         pane.classList.add('hidden');
@@ -238,11 +259,13 @@
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
             const ideaButton = document.getElementById('generate-idea');
             const ideaOutput = document.getElementById('idea-output');
+            const emailIdeaLink = document.getElementById('email-idea-link');
 
             ideaButton.addEventListener('click', async () => {
                 ideaButton.disabled = true;
                 ideaButton.innerText = 'جاري التفكير...';
                 ideaOutput.innerHTML = '<span class="text-gray-400">جاري تحميل فكرتك...</span>';
+                emailIdeaLink.classList.add('hidden');
 
                 const prompts = [
                     "اكتب فكرة لوصفة حلويات مبتكرة باستخدام أدوات مطبخ عصرية، واذكر اسم الوصفة.",
@@ -273,6 +296,10 @@
                     
                     if (generatedText) {
                         ideaOutput.innerText = generatedText;
+                        const subject = encodeURIComponent('فكرة إبداعية من أواني العربية');
+                        const body = encodeURIComponent(`مرحباً!\n\nإليك فكرة رائعة من أواني العربية:\n\n${generatedText}\n\nأتمنى أن تنال إعجابك!`);
+                        emailIdeaLink.href = `mailto:fathey2016@gmail.com?subject=${subject}&body=${body}`;
+                        emailIdeaLink.classList.remove('hidden');
                     } else {
                         ideaOutput.innerText = 'عذراً، لم أستطع توليد فكرة حالياً. حاول مرة أخرى.';
                     }
