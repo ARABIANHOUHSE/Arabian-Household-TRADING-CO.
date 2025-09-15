@@ -132,20 +132,14 @@
                 </div>
             </section>
 
-            <section id="gemini-feature" class="py-16 md:py-20">
+            <section id="interactive-ideas" class="py-16 md:py-20">
                 <div class="container mx-auto px-4 text-center">
-                    <h3 class="text-3xl font-bold mb-4">✨ أفكار إبداعية من Gemini ✨</h3>
+                    <h3 class="text-3xl font-bold mb-4">✨ اقتراحات وأفكار ✨</h3>
                     <p class="max-w-2xl mx-auto text-gray-200 mb-8">
-                        اضغط على الزر للحصول على اقتراح ملهم لوصفة أو فكرة مناسبة باستخدام أواني المطبخ.
+                        اضغط على الزر للحصول على اقتراح ملهم عن وصفة أو فكرة مناسبة.
                     </p>
-                    <button id="generate-idea" class="px-8 py-4 bg-yellow-600 text-white rounded-full text-lg font-bold shadow-lg hover:bg-yellow-700 transition-all button-glow">
-                        أعطني فكرة!
-                    </button>
-                    <div id="idea-output" class="mt-8 p-6 md:p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-600 text-right min-h-[150px] flex items-center justify-center">
-                        <span class="text-gray-400">ستظهر الفكرة هنا...</span>
-                    </div>
-                    <a id="email-idea-link" href="#" class="mt-4 px-6 py-3 bg-gray-700 text-gray-50 rounded-full font-bold shadow-lg hover:bg-gray-600 transition-all hidden">
-                        <span class="ml-2">✉️</span> أرسل الفكرة إلى بريدي
+                    <a href="mailto:fathey2016@gmail.com" class="px-8 py-4 bg-yellow-600 text-white rounded-full text-lg font-bold shadow-lg hover:bg-yellow-700 transition-all button-glow">
+                        الاقتراحات والافكار
                     </a>
                 </div>
             </section>
@@ -253,63 +247,6 @@
                         targetPane.classList.remove('hidden');
                     }
                 });
-            });
-
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            const ideaButton = document.getElementById('generate-idea');
-            const ideaOutput = document.getElementById('idea-output');
-            const emailIdeaLink = document.getElementById('email-idea-link');
-
-            ideaButton.addEventListener('click', async () => {
-                ideaButton.disabled = true;
-                ideaButton.innerText = 'جاري التفكير...';
-                ideaOutput.innerHTML = '<span class="text-gray-400">جاري تحميل فكرتك...</span>';
-                emailIdeaLink.classList.add('hidden');
-
-                const prompts = [
-                    "اكتب فكرة لوصفة حلويات مبتكرة باستخدام أدوات مطبخ عصرية، واذكر اسم الوصفة.",
-                    "اقتراح فكرة عشاء سريع ومميز يمكن تحضيره في أواني الطهي المتوفرة لدينا.",
-                    "اكتب نصيحة قصيرة لتنظيم المطبخ باستخدام أواني التخزين الأنيقة.",
-                    "اكتب فكرة لتقديم مشروبات ساخنة في المناسبات الشتوية باستخدام أكواب أنيقة.",
-                    "اقتراح فكرة لتقديم طبق رئيسي بطريقة فنية ومختلفة باستخدام أواني السيراميك الفاخرة."
-                ];
-
-                const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-
-                const payload = {
-                    contents: [{ parts: [{ text: randomPrompt }] }],
-                    systemInstruction: {
-                        parts: [{ text: "أنت خبير في المطبخ والأواني، مهمتك هي تقديم أفكار إبداعية وملهمة عن وصفات أو طرق تقديم الطعام، بأسلوب جذاب ومختصر." }]
-                    },
-                };
-                
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    const result = await response.json();
-                    const generatedText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-                    
-                    if (generatedText) {
-                        ideaOutput.innerText = generatedText;
-                        const subject = encodeURIComponent('فكرة إبداعية من أواني العربية');
-                        const body = encodeURIComponent(`مرحباً!\n\nإليك فكرة رائعة من أواني العربية:\n\n${generatedText}\n\nأتمنى أن تنال إعجابك!`);
-                        emailIdeaLink.href = `mailto:fathey2016@gmail.com?subject=${subject}&body=${body}`;
-                        emailIdeaLink.classList.remove('hidden');
-                    } else {
-                        ideaOutput.innerText = 'عذراً، لم أستطع توليد فكرة حالياً. حاول مرة أخرى.';
-                    }
-                } catch (error) {
-                    console.error('API Error:', error);
-                    ideaOutput.innerText = 'حدث خطأ. تأكد من اتصالك بالإنترنت.';
-                } finally {
-                    ideaButton.disabled = false;
-                    ideaButton.innerText = 'أعطني فكرة!';
-                }
             });
         });
     </script>
