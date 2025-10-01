@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&family=Playfair+Display:wght@400;700&family=Amiri:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&family=Playfair+Display:wght@400;700;900&family=Amiri:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <!-- Open Graph for social media sharing -->
     <meta property="og:image" content="https://i.ibb.co/8D6KhP8C/5486-logo.png">
     <meta property="og:title" content="أواني العربية ">
@@ -26,7 +26,13 @@
             position: relative;
         }
         .english-font {
+            /* Increased weight for "Arabian Household" */
             font-family: 'Playfair Display', serif;
+            font-weight: 900; 
+        }
+        .tajawal-font {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700; /* Bold weight for better readability */
         }
         .amiri-font {
             font-family: 'Amiri', serif;
@@ -81,9 +87,9 @@
             /* Charcoal pattern for light background */
             background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23333333' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
         }
-        /* Matte Gold glow effect for primary buttons */
+        /* Adjusted Matte Gold glow effect for primary buttons (more subtle) */
         .glow-gold { 
-             box-shadow: 0 0 10px #C2A14D, 0 0 20px #C2A14D, 0 0 30px #C2A14D;
+             box-shadow: 0 0 5px rgba(194, 161, 77, 0.6), 0 0 10px rgba(194, 161, 77, 0.3);
         }
         /* Specific section backgrounds */
         #features {
@@ -123,33 +129,34 @@
             backdrop-filter: blur(5px);
         }
         
-        /* Modal Content Styling - Fixed height and overflow set to scroll for the entire modal */
+        /* Modal Content Styling */
         .modal-content {
             background-color: #FAF9F6; /* Ivory White */
             border-radius: 1rem;
             padding: 1.5rem;
             max-width: 90%;
-            width: 100%;
-            max-height: 90vh; /* Controlled max height based on viewport */
-            overflow-y: hidden; /* Prevent scrolling on the entire modal */
+            max-height: 90vh; 
+            overflow-y: hidden; /* Main modal content does not scroll */
             position: relative;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
         
         /* Category Navigation List */
         .category-nav {
-            min-width: 200px;
+            min-width: 250px; /* Increased min width */
             border-left: 1px solid #E0E0E0;
-            max-height: 70vh; /* Fixed height for nav to match gallery */
-            overflow-y: auto; /* Allow nav to scroll if too long */
+            max-height: 75vh;
+            overflow-y: auto; 
+            padding-right: 10px;
         }
         .category-nav-item {
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1rem; /* Increased padding */
             cursor: pointer;
             transition: all 0.2s;
-            font-size: 1.1rem;
-            font-family: 'Amiri', serif;
+            font-size: 1.15rem; /* Increased font size */
+            font-family: 'Tajawal', sans-serif; /* Applied Tajawal font */
             font-weight: 700;
+            text-align: right;
         }
         .category-nav-item:hover, .category-nav-item.active {
             background-color: #C2A14D; /* Matte Gold background for active/hover */
@@ -162,8 +169,7 @@
         /* Product Gallery Container with Scrolling */
         #product-gallery-container {
             flex-grow: 1;
-            /* Fixed height for gallery to match nav */
-            max-height: 70vh; 
+            max-height: 75vh; 
             overflow-y: auto; /* Enable vertical scrolling */
             padding-right: 10px; /* Space for the scrollbar */
         }
@@ -173,56 +179,57 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem; /* Increased gap */
-            padding: 5px; /* Padding for scroll visibility */
         }
 
         /* Product Image Styling - Increased height for more vertical space */
         .product-image {
             width: 100%;
-            height: 350px; /* Increased height from 300px to 350px */
-            object-fit: contain; /* Ensure full image visibility */
+            height: 350px; /* Increased height */
+            object-fit: contain; /* Contain to prevent cropping */
             border-radius: 0.75rem; /* Slightly more rounded corners */
             border: 2px solid #E0E0E0; /* Slightly thicker border */
             transition: transform 0.3s;
+            background-color: #FFFFFF; /* White background for image containment */
         }
         .product-image:hover {
-            transform: scale(1.05); /* Increased hover scale */
+            transform: scale(1.03); /* Increased hover scale */
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
         }
+        
+        /* Styles for Language Toggle */
+        .lang-toggle-footer {
+            background-color: #E0E0E0;
+            color: #333333;
+            border: 1px solid #C2A14D;
+            font-weight: 700;
+            font-size: 0.875rem; /* Smaller font size */
+            padding: 0.5rem 1rem; /* Smaller padding */
+        }
 
-        /* Media Query adjustments for Mobile */
+        /* Media Query adjustments */
         @media (max-width: 768px) {
             .modal-content {
                 display: flex;
                 flex-direction: column;
                 padding: 1rem;
-                max-height: 95vh;
             }
             .category-nav {
-                display: flex;
-                flex-wrap: nowrap;
-                justify-content: flex-start;
+                max-height: 250px; /* Reduced height on mobile */
                 border-left: none;
                 border-bottom: 1px solid #E0E0E0;
                 padding-bottom: 1rem;
                 margin-bottom: 1rem;
-                overflow-x: auto; /* Horizontal scroll for categories on mobile */
-                max-height: 100px;
             }
             .category-nav-item {
                 border-radius: 0.5rem;
                 margin: 0.25rem;
                 padding: 0.5rem 0.75rem;
-                white-space: nowrap;
-            }
-            #product-gallery-container {
-                max-height: 70vh;
             }
             .product-gallery {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(1, 1fr); /* Single column on mobile */
             }
             .product-image {
-                height: 180px; /* Adjusted height for mobile view */
+                height: 250px; /* Adjusted height for mobile view */
             }
         }
     </style>
@@ -233,87 +240,92 @@
         <div class="decorative-corner top-0 right-0"></div>
         <div class="decorative-corner bottom-0 left-0 transform rotate-180"></div>
 
-        <header class="p-4 md:p-10 hero-bg text-right">
-            <div class="flex items-center justify-start gap-2 md:gap-4">
-                <img src="https://i.ibb.co/8D6KhP8C/5486-logo.png" alt="شعار أواني العربية" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12">
+        <header class="p-4 md:p-10 hero-bg text-right flex justify-start items-start">
+            
+            <!-- Brand Logo and Name (Right Aligned) -->
+            <div id="brandInfo" class="flex items-center justify-start gap-2 md:gap-4">
+                <!-- Logo: Increased size for desktop view (md:w-16 md:h-16) -->
+                <img id="brandLogo" src="https://i.ibb.co/8D6KhP8C/5486-logo.png" alt="شعار أواني العربية" class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16">
                 <div>
-                    <h1 class="text-xl sm:text-2xl md:text-3xl font-bold highlight-text">أواني العربية</h1>
-                    <p class="text-sm sm:text-base md:text-xl mt-1 text-gray-700 english-font">Arabian Household</p>
+                    <!-- Name (Arabic): Adjusted size to match English height -->
+                    <h1 id="brandNameAr" class="text-xl sm:text-2xl font-bold highlight-text tajawal-font" style="font-size: 1.25rem;">أواني العربية</h1>
+                    <!-- Name (English): Font weight increased to 900 for boldness -->
+                    <p id="brandNameEn" class="text-base sm:text-lg mt-1 text-gray-700 english-font" style="font-weight: 900; line-height: 1.25; font-size: 1.05rem;">Arabian Household</p>
                 </div>
             </div>
         </header>
 
         <main>
-            <section id="hero" class="text-center py-16 md:py-24 px-4 hero-bg">
-                <h2 class="text-3xl md:text-5xl lg:text-6xl font-black highlight-text amiri-font max-w-4xl mx-auto">
+            <section id="hero" class="text-center py-20 md:py-32 px-4 hero-bg">
+                <h2 id="heroTitle" class="text-4xl md:text-6xl lg:text-7xl font-bold highlight-text amiri-font max-w-4xl mx-auto">
                     من أدوات المطبخ إلى تفاصيل الطاولة... كل ما تحتاجه في مكان واحد.
                 </h2>
             </section>
             
             <section id="features" class="py-16 md:py-20 text-gray-800">
                 <div class="container mx-auto px-4 max-w-4xl">
-                    <h3 class="text-3xl font-bold text-center mb-12 highlight-text">لماذا تختارنا؟</h3>
+                    <h3 id="featuresTitle" class="text-3xl font-bold text-center mb-12 highlight-text tajawal-font">لماذا تختارنا؟</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="feature-card text-center p-6 rounded-xl shadow-lg">
                             <div class="text-5xl mb-4 brand-text">💰</div>
-                            <h4 class="text-xl font-bold mb-2 highlight-text">أسعار تنافسية</h4>
-                            <p class="text-gray-700">نقدم أفضل الأسعار في السوق مع الحفاظ على الجودة العالية لمنتجاتنا.</p>
+                            <h4 id="feature1Title" class="text-xl font-bold mb-2 highlight-text tajawal-font">أسعار تنافسية</h4>
+                            <p id="feature1Text" class="text-gray-700">نقدم أفضل الأسعار في السوق مع الحفاظ على الجودة العالية لمنتجاتنا.</p>
                         </div>
                         <div class="feature-card text-center p-6 rounded-xl shadow-lg">
                             <div class="text-5xl mb-4 brand-text">🏢</div>
-                            <h4 class="text-xl font-bold mb-2 highlight-text">عروض خاصة للشركات</h4>
-                            <p class="text-gray-700">باقات وعروض مصممة خصيصًا لتلبية احتياجات الشركات والمطاعم.</p>
+                            <h4 id="feature2Title" class="text-xl font-bold mb-2 highlight-text tajawal-font">عروض خاصة للشركات</h4>
+                            <p id="feature2Text" class="text-gray-700">باقات وعروض مصممة خصيصًا لتلبية احتياجات الشركات والمطاعم.</p>
                         </div>
                         <div class="feature-card text-center p-6 rounded-xl shadow-lg">
                             <div class="text-5xl mb-4 brand-text">🛡️</div>
-                            <h4 class="text-xl font-bold mb-2 highlight-text">ضمان من المحل</h4>
-                            <p class="text-gray-700">استمتع بضمان مباشر من "أواني العربية"، لخدمة أسرع وأكثر موثوقية.</p>
+                            <h4 id="feature3Title" class="text-xl font-bold mb-2 highlight-text tajawal-font">ضمان من المحل</h4>
+                            <p id="feature3Text" class="text-gray-700">استمتع بضمان مباشر من "أواني العربية"، لخدمة أسرع وأكثر موثوقية.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- New Section: Product Categories Button -->
-            <section id="categories-button" class="py-16 md:py-20 bg-[#D8C7A0]">
+            <section id="categories-button" class="py-16 md:py-20 bg-[#F5F5DC]">
                 <div class="container mx-auto px-4 text-center">
-                    <button id="openCategoriesModal" class="px-12 py-6 bg-yellow-600 text-white rounded-full text-2xl font-black shadow-lg hover:bg-opacity-90 transition-all glow-gold amiri-font" style="background-color: #C2A14D;">
-                        اكتشف تشكيلتنا من الأواني المنزلية ✨
+                    <button id="openCategoriesModal" class="px-12 py-6 bg-yellow-600 text-white rounded-full text-2xl font-bold shadow-lg hover:bg-opacity-90 transition-all glow-gold amiri-font" style="background-color: #C2A14D;">
+                        <span id="exploreBtnText">اكتشف تشكيلتنا من الأواني المنزلية</span>
                     </button>
                 </div>
             </section>
             
-            <section id="interactive-ideas" class="py-16 md:py-20 bg-[#8A9A5B] text-white">
+            <section id="interactive-ideas" class="py-16 md:py-20">
                 <div class="container mx-auto px-4 text-center">
-                    <h3 class="text-3xl font-bold mb-4 highlight-text text-white">✨ اقتراحات وأفكار ✨</h3>
-                    <p class="max-w-2xl mx-auto mb-8 text-white">
+                    <h3 id="ideasTitle" class="text-3xl font-bold mb-4 highlight-text tajawal-font">✨ اقتراحات وأفكار ✨</h3>
+                    <p id="ideasText" class="max-w-2xl mx-auto mb-8 text-gray-700">
                         اضغط على الزر للتواصل معنا مباشرة بخصوص أي استفسارات أو أفكار لديك.
                     </p>
-                    <a href="mailto:fathey2016@gmail.com" class="px-8 py-4 bg-[#C2A14D] text-white rounded-full text-lg font-bold shadow-lg hover:bg-opacity-90 transition-all">
-                        الاقتراحات والافكار
+                    <a id="ideasLink" href="mailto:fathey2016@gmail.com" class="px-8 py-4 bg-yellow-600 text-white rounded-full text-lg font-bold shadow-lg hover:bg-yellow-700 transition-all tajawal-font" style="background-color: #C2A14D;">
+                        <span id="ideasLinkText">الاقتراحات والافكار</span>
                     </a>
                 </div>
             </section>
 
             <section id="special-offers" class="py-16 md:py-20">
                 <div class="container mx-auto px-4 text-center">
-                    <h3 class="text-3xl font-bold text-center mb-8 highlight-text">اكتشف عروضنا الخاصة</h3>
-                    <p class="max-w-2xl mx-auto text-gray-700 mb-12">
+                    <h3 id="offersTitle" class="text-3xl font-bold text-center mb-8 highlight-text tajawal-font">اكتشف عروضنا الخاصة</h3>
+                    <p id="offersText" class="max-w-2xl mx-auto text-gray-700 mb-12">
                         سواء كنتم شركة تبحثون عن تجهيزات لمناسباتكم أو مطعماً يسعى للتميز، لدينا ما يناسبكم. اختر الفئة لمعرفة المزيد.
                     </p>
                     <div class="flex justify-center mb-8 border-b-2 border-gray-300">
-                        <button class="tab-button active py-3 px-8 text-lg font-semibold" data-tab="companies">للشركات والمؤسسات</button>
-                        <button class="tab-button py-3 px-8 text-lg font-semibold" data-tab="restaurants">للمطاعم والمقاهي</button>
+                        <button class="tab-button active py-3 px-8 text-lg font-semibold tajawal-font" data-tab="companies" id="tabCompanies">للشركات والمؤسسات</button>
+                        <button class="tab-button py-3 px-8 text-lg font-semibold tajawal-font" data-tab="restaurants" id="tabRestaurants">للمطاعم والمقاهي</button>
                     </div>
                     <div id="tab-content" class="bg-white p-6 rounded-lg shadow-inner border border-gray-200">
                         <div id="companies" class="tab-pane active">
-                            <h4 class="text-2xl font-bold mb-4 brand-text">تجهيزات متكاملة لشركتكم</h4>
-                            <p class="max-w-xl mx-auto text-gray-700">
+                            <h4 id="companiesTitle" class="text-2xl font-bold mb-4 brand-text tajawal-font">تجهيزات متكاملة لشركتكم</h4>
+                            <p id="companiesText" class="max-w-xl mx-auto text-gray-700">
                                 نقدم حلولاً متكاملة لتجهيز مطابخ الشركات وغرف الاستراحة بأطقم فاخرة من أواني التقديم والقهوة. خصومات خاصة على الكميات وبرامج توريد مرنة تناسب ميزانيتكم.
                             </p>
                         </div>
                         <div id="restaurants" class="tab-pane hidden">
-                             <h4 class="text-2xl font-bold mb-4 brand-text">أوانٍ تليق بمطعمكم</h4>
-                            <p class="max-w-xl mx-auto text-gray-700">
+                             <h4 id="restaurantsTitle" class="text-2xl font-bold mb-4 brand-text tajawal-font">أوانٍ تليق بمطعمكم</h4>
+                            <p id="restaurantsText" class="max-w-xl mx-auto text-gray-700">
                                 عزز تجربة ضيوفك بمجموعة مختارة من أواني الطهي والتقديم الاحترافية. متانة وجودة عالية تلبي معايير المطاعم الفاخرة، مع عروض حصرية على الطلبات الكبيرة وعقود التوريد السنوية.
                             </p>
                         </div>
@@ -325,18 +337,18 @@
         
         <footer class="text-center py-10 hero-bg border-t border-gray-300">
             <div class="container mx-auto px-4">
-                <h3 class="text-2xl font-bold mb-6 highlight-text">تواصل معنا</h3>
+                <h3 id="contactTitle" class="text-2xl font-bold mb-6 highlight-text tajawal-font">تواصل معنا</h3>
                 
                 <!-- Main Contact Links -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-lg mb-6 text-gray-700">
-                    <a href="tel:+966559999659" class="hover:text-yellow-600 transition-colors flex items-center gap-2">
+                    <a id="telLink" href="tel:+966559999659" class="hover:text-yellow-600 transition-colors flex items-center gap-2">
                         📞 +966559999659
                     </a>
-                    <a href="https://wa.me/966559999659" class="hover:text-yellow-600 transition-colors flex items-center gap-2" target="_blank">
-                        📱 واتساب
+                    <a id="whatsappLink" href="https://wa.me/966559999659" class="hover:text-yellow-600 transition-colors flex items-center gap-2" target="_blank">
+                        📱 <span id="whatsappText">واتساب</span>
                     </a>
-                    <a href="https://maps.app.goo.gl/rGe8tC2SSZpxpPkW6?g_st=ipc" class="hover:text-yellow-600 transition-colors flex items-center gap-2" target="_blank">
-                        📍 تفضل بزيارتنا
+                    <a id="mapLink" href="https://maps.app.goo.gl/rGe8tC2SSZpxpPkW6?g_st=ipc" class="hover:text-yellow-600 transition-colors flex items-center gap-2" target="_blank">
+                        📍 <span id="mapText">تفضل بزيارتنا</span>
                     </a>
                 </div>
 
@@ -350,16 +362,16 @@
                     </a>
                 </div>
 
-                <!-- Brand Info -->
+                <!-- Brand Info in Footer -->
                 <div class="flex items-center justify-center mt-6 gap-4">
                     <img src="https://i.ibb.co/8D6KhP8C/5486-logo.png" alt="شعار أواني العربية" class="w-16 md:w-20">
                     <div>
-                        <p class="text-xl md:text-2xl font-bold highlight-text">أواني العربية</p>
-                        <p class="text-sm md:text-lg mt-1 text-gray-700 english-font">Arabian Household</p>
+                        <p id="footerBrandNameAr" class="text-xl md:text-2xl font-bold highlight-text tajawal-font" style="font-size: 1.125rem;">أواني العربية</p>
+                        <p id="footerBrandNameEn" class="text-base md:text-lg mt-1 text-gray-700 english-font">Arabian Household</p>
                     </div>
                 </div>
-                <p class="text-gray-600 mt-2">راحتك تبدأ من مطبخك</p>
-                <div class="mt-4 text-xs text-gray-500">
+                <p id="footerSlogan" class="text-gray-600 mt-2">راحتك تبدأ من مطبخك</p>
+                <div id="footerCopy" class="mt-4 text-xs text-gray-500">
                     جميع الحقوق محفوظة © 2025
                 </div>
             </div>
@@ -373,12 +385,12 @@
             <button id="closeCategoriesModal" class="absolute top-4 left-4 text-3xl font-bold text-gray-500 hover:text-red-500 transition-colors">
                 &times;
             </button>
-            <h3 class="text-3xl font-bold text-center mb-8 highlight-text">معرض فئات المنتجات</h3>
+            <h3 id="modalTitle" class="text-3xl font-bold text-center mb-8 highlight-text tajawal-font">معرض فئات المنتجات</h3>
 
             <div class="flex flex-col md:flex-row gap-6">
                 <!-- Category Navigation List (Right/Top on mobile) -->
                 <div class="category-nav p-2">
-                    <p class="text-sm font-semibold mb-2 text-center md:text-right text-gray-600">اختر فئة:</p>
+                    <p id="navPrompt" class="text-sm font-semibold mb-2 text-center md:text-right text-gray-600">اختر فئة:</p>
                     <div id="category-list">
                         <!-- Navigation items generated by JS -->
                     </div>
@@ -386,7 +398,7 @@
 
                 <!-- Product Gallery (Left/Bottom on mobile) -->
                 <div id="product-gallery-container" class="flex-grow">
-                    <h4 id="gallery-title" class="text-xl font-bold brand-text mb-4">أطقم المطبخ</h4>
+                    <h4 id="gallery-title" class="text-xl font-bold brand-text tajawal-font mb-4">أطقم المطبخ</h4>
                     <div id="product-gallery" class="product-gallery">
                         <!-- Product images generated by JS -->
                     </div>
@@ -397,7 +409,8 @@
     </div>
 
     <script>
-        // Data structure for product categories and their images
+        // --- 1. DATA STRUCTURES (must be global) ---
+        
         const categoriesData = {
             'اطقم-المطبخ': {
                 name: 'أطقم المطبخ',
@@ -433,10 +446,11 @@
                     'https://www2.0zz0.com/2025/09/29/10/337030469.png'
                 ]
             },
-            'خلاطات-ومطاحن': {
+            'الاجهزة-الصغيرة': {
                 name: 'الأجهزة الصغيرة للمطبخ',
                 url: '#',
                 images: [
+                    'https://www2.0zz0.com/2025/09/30/11/480969353.png', /* New image */
                     'https://www2.0zz0.com/2025/09/29/10/719803559.jpg',
                     'https://www2.0zz0.com/2025/09/29/10/938516519.jpg',
                     'https://www2.0zz0.com/2025/09/29/10/699957071.jpg',
@@ -446,8 +460,7 @@
                     'https://www2.0zz0.com/2025/09/29/10/891220009.png',
                     'https://www2.0zz0.com/2025/09/29/10/373484212.png',
                     'https://www2.0zz0.com/2025/09/29/10/148522920.png',
-                    'https://www2.0zz0.com/2025/09/29/10/637282999.png',
-                    'https://www2.0zz0.com/2025/09/30/11/480969353.png'
+                    'https://www2.0zz0.com/2025/09/29/10/637282999.png'
                 ]
             },
             'قدور-وعجانات': {
@@ -512,9 +525,9 @@
                     'https://www2.0zz0.com/2025/09/29/11/709817688.png',
                     'https://www2.0zz0.com/2025/09/29/11/932370225.png',
                     'https://www2.0zz0.com/2025/09/29/11/739148575.png',
-                    'https://www2.0zz0.com/2025/09/29/11/899410290.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/536785044.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/122083560.png', 
+                    'https://www2.0zz0.com/2025/09/29/11/899410290.png',
+                    'https://www2.0zz0.com/2025/09/29/11/536785044.png',
+                    'https://www2.0zz0.com/2025/09/29/11/122083560.png',
                     'https://www2.0zz0.com/2025/09/29/11/272160816.png'
                 ]
             },
@@ -522,18 +535,18 @@
                 name: 'غلايات الماء وعصارة الفواكة الكهربائية',
                 url: '#',
                 images: [
-                    'https://www2.0zz0.com/2025/09/29/11/628277598.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/523944009.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/809543849.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/654635137.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/664638428.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/331173668.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/304422327.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/414219730.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/879391520.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/914417095.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/359484018.png', 
-                    'https://www2.0zz0.com/2025/09/29/11/173594280.png', 
+                    'https://www2.0zz0.com/2025/09/29/11/628277598.png',
+                    'https://www2.0zz0.com/2025/09/29/11/523944009.png',
+                    'https://www2.0zz0.com/2025/09/29/11/809543849.png',
+                    'https://www2.0zz0.com/2025/09/29/11/654635137.png',
+                    'https://www2.0zz0.com/2025/09/29/11/664638428.png',
+                    'https://www2.0zz0.com/2025/09/29/11/331173668.png',
+                    'https://www2.0zz0.com/2025/09/29/11/304422327.png',
+                    'https://www2.0zz0.com/2025/09/29/11/414219730.png',
+                    'https://www2.0zz0.com/2025/09/29/11/879391520.png',
+                    'https://www2.0zz0.com/2025/09/29/11/914417095.png',
+                    'https://www2.0zz0.com/2025/09/29/11/359484018.png',
+                    'https://www2.0zz0.com/2025/09/29/11/173594280.png',
                     'https://www2.0zz0.com/2025/09/29/11/743589374.png'
                 ]
             },
@@ -541,9 +554,9 @@
                 name: 'ماكينات القهوة',
                 url: '#',
                 images: [
-                    'https://www2.0zz0.com/2025/09/29/11/633777837.jpg',
-                    'https://www2.0zz0.com/2025/09/29/11/792243350.png',
-                    'https://www2.0zz0.com/2025/09/29/11/619959411.png',
+                    'https://www2.0zz0.com/2025/09/29/11/633777837.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/11/792243350.png', 
+                    'https://www2.0zz0.com/2025/09/29/11/619959411.png', 
                     'https://www2.0zz0.com/2025/09/29/11/952677258.png'
                 ]
             },
@@ -580,6 +593,16 @@
                     'https://www2.0zz0.com/2025/09/30/11/369741895.png'
                 ]
             },
+            'اجهزة-تبريد': {
+                name: 'أجهزة وبرادات المياة',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/30/11/741742554.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/231576059.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/764269549.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/639505349.png'
+                ]
+            },
             'مواقد-المطبخ': {
                 name: 'مواقد المطبخ',
                 url: '#',
@@ -598,7 +621,7 @@
                     'https://www2.0zz0.com/2025/09/30/11/341479321.png', 
                     'https://www2.0zz0.com/2025/09/30/11/438251529.png',  
                     'https://www2.0zz0.com/2025/09/30/11/985748731.png', 
-                    'https://www2.0zz0.com/2025/09/30/11/255800252.png'
+                    'https://www2.0zz0.com/2025/09/30/11/255800252.png'     
                 ]
             },
             'حاويات-النفايات': {
@@ -614,15 +637,7 @@
                     'https://www2.0zz0.com/2025/09/30/11/151795902.png'
                 ]
             },
-            'موزعات-المياة': {
-                name: 'موزعات المياة',
-                url: '#',
-                images: [
-                    'https://placehold.co/150x150/C2A14D/FFFFFF?text=موزع+مياه',
-                    'https://placehold.co/150x150/8A9A5B/FFFFFF?text=قارورة+مياه'
-                ]
-            },
-            'الموازين-الرقمية': {
+            'موازين-رقمية': {
                 name: 'الموازين الرقمية',
                 url: '#',
                 images: [
@@ -632,22 +647,11 @@
                     'https://www2.0zz0.com/2025/09/30/11/923287210.png',  
                     'https://www2.0zz0.com/2025/09/30/11/749541212.png'
                 ]
-            },
-            'اجهزة-وبرادات-المياة': {
-                name: 'أجهزة وبرادات المياة',
-                url: '#',
-                images: [
-                    'https://www2.0zz0.com/2025/09/30/11/741742554.png', 
-                    'https://www2.0zz0.com/2025/09/30/11/231576059.png', 
-                    'https://www2.0zz0.com/2025/09/30/11/764269549.png', 
-                    'https://www2.0zz0.com/2025/09/30/11/639505349.png'
-                ]
             }
         };
 
-        let currentCategory = 'اطقم-المطبخ'; // Default to the first category
-
-        function renderCategoryList() {
+        // Function to render the category navigation links
+        const renderCategoryList = () => {
             const listContainer = document.getElementById('category-list');
             listContainer.innerHTML = '';
             
@@ -656,16 +660,19 @@
                 const button = document.createElement('div');
                 button.className = 'category-nav-item';
                 button.dataset.category = key;
-                button.textContent = item.name;
+                button.textContent = item.name; 
                 
-                // Add event listener to switch gallery content
                 button.addEventListener('click', () => {
                     updateProductGallery(key);
                     // Update active state in navigation
                     document.querySelectorAll('.category-nav-item').forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    // Scroll the navigation itself back to the top to see the selected item
-                    document.getElementById('category-list').scrollTop = 0;
+                    
+                    // **FIX: Scroll the category navigation list to show the selected item at the top**
+                    const navContainer = document.querySelector('.category-nav');
+                    if (navContainer) {
+                        navContainer.scrollTop = button.offsetTop - navContainer.offsetTop; 
+                    }
                 });
                 
                 listContainer.appendChild(button);
@@ -676,10 +683,10 @@
             if (firstButton) {
                 firstButton.classList.add('active');
             }
-        }
+        };
 
-        function updateProductGallery(categoryKey) {
-            const scrollContainer = document.getElementById('product-gallery-container');
+        // Function to update the product image gallery
+        const updateProductGallery = (categoryKey) => {
             const galleryContainer = document.getElementById('product-gallery');
             const titleElement = document.getElementById('gallery-title');
             const data = categoriesData[categoryKey];
@@ -688,59 +695,70 @@
 
             // Update title
             titleElement.textContent = data.name;
-            currentCategory = categoryKey;
 
             // Clear existing images
             galleryContainer.innerHTML = '';
             
-            // Render ALL images for the selected category
-            data.images.forEach((imageUrl) => {
-                const image = document.createElement('img');
-                image.src = imageUrl;
-                image.alt = `منتج من فئة ${data.name}`;
-                image.className = 'product-image cursor-default'; 
-
-                galleryContainer.appendChild(image);
-            });
+            // Render images
+            if (data.images.length === 0) {
+                 const notFoundMessage = document.createElement('p');
+                 notFoundMessage.className = 'col-span-2 text-center text-gray-500 mt-4';
+                 notFoundMessage.textContent = 'لا توجد صور متوفرة لهذه الفئة حالياً.';
+                 galleryContainer.appendChild(notFoundMessage);
+            } else {
+                data.images.forEach((imageUrl) => {
+                    const image = document.createElement('img');
+                    image.src = imageUrl;
+                    image.alt = `منتج من فئة ${data.name}`;
+                    image.className = 'product-image cursor-default'; 
+                    galleryContainer.appendChild(image);
+                });
+            }
             
-            // **الحل النهائي للتمرير:** إجبار حاوية الصور على العودة إلى الأعلى (scrollTop = 0) فور تحميل المحتوى الجديد
+            // **FINAL FIX: Ensure product gallery scrolls to the top using requestAnimationFrame (Most reliable)**
+            const scrollContainer = document.getElementById('product-gallery-container');
             window.requestAnimationFrame(() => {
-                // Ensure scroll container is reset
                 scrollContainer.scrollTop = 0;
-                // Double check after a very short delay
-                setTimeout(() => {
-                    scrollContainer.scrollTop = 0;
-                }, 10); 
             });
-        }
+        };
 
+        // --- 2. COUNTDOWN TIMER (Placeholder for consistency) ---
+        const countdownDate = new Date("Sep 30, 2025 00:00:00").getTime();
+
+        const countdownFunction = setInterval(function() {
+            // Placeholder logic to prevent error in current structure
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
+            
+            if(daysEl) daysEl.innerText = "00";
+            if(hoursEl) hoursEl.innerText = "00";
+            if(minutesEl) minutesEl.innerText = "00";
+            if(secondsEl) secondsEl.innerText = "00";
+        }, 1000);
+
+        // --- 3. TAB FUNCTIONALITY ---
         document.addEventListener('DOMContentLoaded', function () {
-            // Tab functionality for Special Offers
             const tabs = document.querySelectorAll('.tab-button');
             const tabPanes = document.querySelectorAll('.tab-pane');
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    // Reset all tabs to inactive state
                     tabs.forEach(item => item.classList.remove('active', 'text-gray-50'));
-                    
-                    // Update text color for inactive tabs to fit current light background
                     tabs.forEach(item => {
                         if (!item.classList.contains('active')) {
                             item.classList.add('text-gray-600');
                         }
                     });
 
-                    // Set clicked tab to active state
                     tab.classList.add('active', 'font-bold');
                     tab.classList.remove('text-gray-600');
 
-                    // Hide all content panes
                     tabPanes.forEach(pane => {
                         pane.classList.add('hidden');
                     });
                     
-                    // Show target content pane
                     const targetPane = document.getElementById(tab.dataset.tab);
                     if(targetPane) {
                         targetPane.classList.remove('hidden');
@@ -748,34 +766,39 @@
                 });
             });
 
-            // Modal functionality for Categories
-            const modal = document.getElementById('categoriesModal');
-            const openButton = document.getElementById('openCategoriesModal');
-            const closeButton = document.getElementById('closeCategoriesModal');
-            
-            openButton.addEventListener('click', () => {
-                modal.classList.remove('hidden');
-                // Ensure content is rendered and initialized on open
+            // Modal open/close logic
+            const categoriesModal = document.getElementById('categoriesModal');
+            document.getElementById('openCategoriesModal').addEventListener('click', () => {
+                categoriesModal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden'); // Prevent body scroll
+                
                 renderCategoryList();
-                updateProductGallery(currentCategory);
+                // Load default gallery content (first category)
+                const defaultCategoryKey = Object.keys(categoriesData)[0];
+                updateProductGallery(defaultCategoryKey);
+                
+                // **Scroll the product gallery to the top when the modal opens**
+                const scrollContainer = document.getElementById('product-gallery-container');
+                scrollContainer.scrollTop = 0;
             });
 
-            closeButton.addEventListener('click', () => {
-                modal.classList.add('hidden');
+            document.getElementById('closeCategoriesModal').addEventListener('click', () => {
+                categoriesModal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
             });
-
-            // Close modal when clicking outside
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.add('hidden');
+            
+            // Close modal when clicking outside (on overlay)
+            categoriesModal.addEventListener('click', (e) => {
+                if (e.target === categoriesModal) {
+                    categoriesModal.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
                 }
             });
 
-            // Initialize the gallery on first load
+            // Initial content load
             renderCategoryList();
-            updateProductGallery(currentCategory);
+            updateProductGallery(Object.keys(categoriesData)[0]);
         });
     </script>
 </body>
 </html>
-
