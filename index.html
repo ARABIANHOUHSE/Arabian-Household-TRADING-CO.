@@ -1,101 +1,808 @@
-Skip to content
-Navigation Menu
-ARABIANHOUHSE
-Arabian-Household-TRADING-CO.
-
-Type / to search
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Arabian-Household-TRADING-CO.
-/
-index.html
-in
-main
-
-Edit
-
-Preview
- @@ -7,6 +7,7 @@
-     <script src="https://cdn.tailwindcss.com"></script>
-     <script src="https://cdn.tailwindcss.com"></script>
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عروض أواني العربية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- تم دمج جميع الخطوط هنا لضمان عدم وجود تضارب: Noto Kufi Arabic, Playfair Display (bold), Amiri, Tajawal -->
-     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&family=Playfair+Display:wght@400;700;900&family=Amiri:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&family=Playfair+Display:wght@400;700;900&family=Amiri:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-     <!-- Open Graph for social media sharing -->
-     <!-- Open Graph for social media sharing -->
-     <meta property="og:image" content="https://i.ibb.co/8D6KhP8C/5486-logo.png">
-     <meta property="og:image" content="https://i.ibb.co/8D6KhP8C/5486-logo.png">
- @@ -242,7 +243,7 @@
- 
- 
-         <header class="p-4 md:p-10 hero-bg text-right flex justify-start items-start">
-         <header class="p-4 md:p-10 hero-bg text-right flex justify-start items-start">
- 
- 
-            <!-- Brand Logo and Name (Right Aligned) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&family=Playfair+Display:wght@400;700;900&family=Amiri:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Open Graph for social media sharing -->
+    <meta property="og:image" content="https://i.ibb.co/8D6KhP8C/5486-logo.png">
+    <meta property="og:title" content="أواني العربية ">
+    <meta property="og:description" content="اكتشف أواني المنزلية الفاخرة وعروضنا الخاصة التي لا تُفوّت.">
+    <!-- Chosen Palette: Ivory White (#FAF9F6), Charcoal Gray (#333333), Matte Gold (#C2A14D), Olive Green (#8A9A5B), Sand Beige (#D8C7A0) -->
+    <!-- Application Structure Plan: A top-to-bottom promotional landing page that translates the static ad into an an interactive experience. It starts with a Hero section featuring a large welcoming phrase, followed by sections for key Features, an an interactive Product Category gallery, and a tabbed interface for Special Offers. This structure guides the user from the main message to exploring the products and specific deals, making the ad more engaging and informative than a static image. -->
+    <!-- Visualization & Content Choices: Main Offer -> Goal: Attract Attention -> Presentation: Large, static text -> Interaction: None -> Justification: Provides clear, immediate message. | Key Features -> Goal: Inform -> Presentation: Icon + Text cards -> Interaction: Hover effects -> Justification: Scannable and clean. | Product Info -> Goal: Engage/Explore -> Presentation: Interactive Image Gallery (Modal) -> Interaction: JS-powered category switching and guaranteed scroll-to-top on new content load -> Justification: Allows users to explore a large volume of store offerings efficiently. | Special Offers -> Goal: Organize -> Presentation: Tabbed content -> Interaction: JS-powered tab switching -> Justification: Segments information cleanly. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            /* Ivory White for Clean Background */
+            background-color: #FAF9F6; 
+            /* Charcoal Gray for Main Text */
+            color: #333333;
+            position: relative;
+        }
+        .english-font {
+            /* Increased weight for "Arabian Household" */
+            font-family: 'Playfair Display', serif;
+            font-weight: 900; 
+        }
+        .tajawal-font {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700; /* Bold weight for better readability */
+        }
+        .amiri-font {
+            font-family: 'Amiri', serif;
+            font-weight: 700; /* Bold weight for better readability */
+        }
+        .hero-bg {
+            /* Sand Beige for subtle background texture */
+            background-color: #D8C7A0;
+            /* Subtle light gradient for depth */
+            background-image:
+                radial-gradient(circle at 15% 85%, rgba(194, 161, 77, 0.1), transparent 30%),
+                radial-gradient(circle at 85% 20%, rgba(138, 154, 91, 0.1), transparent 40%);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        .brand-text {
+            /* Matte Gold for luxury titles */
+            color: #C2A14D; 
+        }
+        .highlight-text {
+            /* Charcoal Gray for high contrast titles on light backgrounds */
+            color: #333333; 
+        }
+        .timer-box {
+            /* White background with Matte Gold border */
+            background-color: #FFFFFF; 
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(194, 161, 77, 0.5);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card, .category-card, .tab-button {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover, .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tab-button.active {
+            /* Active button color */
+            background-color: #C2A14D; 
+            color: #FFFFFF;
+        }
+        .category-card.active {
+            border-color: #C2A14D;
+            transform: scale(1.05);
+        }
+        .decorative-corner {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.1;
+            /* Charcoal pattern for light background */
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23333333' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        /* Adjusted Matte Gold glow effect for primary buttons (more subtle) */
+        .glow-gold { 
+             box-shadow: 0 0 5px rgba(194, 161, 77, 0.6), 0 0 10px rgba(194, 161, 77, 0.3);
+        }
+        /* Specific section backgrounds */
+        #features {
+            background-color: #E0E0E0; /* Light Gray */
+        }
+        #interactive-ideas {
+            background-color: #8A9A5B; /* Olive Green */
+            color: #FFFFFF; /* White text on Olive Green */
+        }
+        #special-offers {
+            background-color: #FAF9F6; /* Ivory White */
+        }
+        .feature-card {
+            background-color: #E0E0E0; /* Light Gray for cards */
+            border: 1px solid #C2A14D; /* Matte Gold Border */
+            box-shadow: none; /* Removed shadow to blend */
+        }
+        .tab-button {
+            color: #333333;
+        }
+        .tab-button:not(.active):hover {
+            background-color: #F5F5DC;
+        }
+        
+        /* Modal Overlay Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 50; /* Above all other content */
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Modal Content Styling */
+        .modal-content {
+            background-color: #FAF9F6; /* Ivory White */
+            border-radius: 1rem;
+            padding: 1.5rem;
+            max-width: 90%;
+            max-height: 90vh; 
+            overflow-y: hidden; /* Main modal content does not scroll */
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Category Navigation List */
+        .category-nav {
+            min-width: 250px; /* Increased min width */
+            border-left: 1px solid #E0E0E0;
+            max-height: 75vh;
+            overflow-y: auto; 
+            padding-right: 10px;
+        }
+        .category-nav-item {
+            padding: 0.85rem 1rem; /* Increased padding */
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.15rem; /* Increased font size */
+            font-family: 'Tajawal', sans-serif; /* Applied Tajawal font */
+            font-weight: 700;
+            text-align: right;
+        }
+        .category-nav-item:hover, .category-nav-item.active {
+            background-color: #C2A14D; /* Matte Gold background for active/hover */
+            color: #FFFFFF;
+        }
+        .category-nav-item.active {
+            border-radius: 0 1rem 1rem 0;
+        }
+
+        /* Product Gallery Container with Scrolling */
+        #product-gallery-container {
+            flex-grow: 1;
+            max-height: 75vh; 
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding-right: 10px; /* Space for the scrollbar */
+        }
+
+        /* Product Gallery Grid */
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem; /* Increased gap */
+        }
+
+        /* Product Image Styling - Increased height for more vertical space */
+        .product-image {
+            width: 100%;
+            height: 350px; /* Increased height */
+            object-fit: contain; /* Contain to prevent cropping */
+            border-radius: 0.75rem; /* Slightly more rounded corners */
+            border: 2px solid #E0E0E0; /* Slightly thicker border */
+            transition: transform 0.3s;
+            background-color: #FFFFFF; /* White background for image containment */
+        }
+        .product-image:hover {
+            transform: scale(1.03); /* Increased hover scale */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+        }
+        
+        /* Styles for Language Toggle */
+        .lang-toggle-footer {
+            background-color: #E0E0E0;
+            color: #333333;
+            border: 1px solid #C2A14D;
+            font-weight: 700;
+            font-size: 0.875rem; /* Smaller font size */
+            padding: 0.5rem 1rem; /* Smaller padding */
+        }
+
+        /* Media Query adjustments */
+        @media (max-width: 768px) {
+            .modal-content {
+                display: flex;
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .category-nav {
+                max-height: 250px; /* Reduced height on mobile */
+                border-left: none;
+                border-bottom: 1px solid #E0E0E0;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+            .category-nav-item {
+                border-radius: 0.5rem;
+                margin: 0.25rem;
+                padding: 0.5rem 0.75rem;
+            }
+            .product-gallery {
+                grid-template-columns: repeat(1, 1fr); /* Single column on mobile */
+            }
+            .product-image {
+                height: 250px; /* Adjusted height for mobile view */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="relative overflow-hidden">
+        <div class="decorative-corner top-0 right-0"></div>
+        <div class="decorative-corner bottom-0 left-0 transform rotate-180"></div>
+
+        <header class="p-4 md:p-10 hero-bg text-right flex justify-start items-start">
+            
             <!-- Brand Logo and Name (Moved to Left) -->
-             <div id="brandInfo" class="flex items-center justify-start gap-2 md:gap-4">
-             <div id="brandInfo" class="flex items-center justify-start gap-2 md:gap-4">
-                 <!-- Logo: Increased size for desktop view (md:w-16 md:h-16) -->
-                 <!-- Logo: Increased size for desktop view (md:w-16 md:h-16) -->
-                 <img id="brandLogo" src="https://i.ibb.co/8D6KhP8C/5486-logo.png" alt="شعار أواني العربية" class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16">
-                 <img id="brandLogo" src="https://i.ibb.co/8D6KhP8C/5486-logo.png" alt="شعار أواني العربية" class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16">
- @@ -352,14 +353,17 @@ <h3 id="contactTitle" class="text-2xl font-bold mb-6 highlight-text tajawal-font
-                     </a>
-                     </a>
-                 </div>
-                 </div>
- 
- 
-                <!-- Social Media Links -->
+            <div id="brandInfo" class="flex items-center justify-start gap-2 md:gap-4">
+                <!-- Logo: Increased size for desktop view (md:w-16 md:h-16) -->
+                <img id="brandLogo" src="https://i.ibb.co/8D6KhP8C/5486-logo.png" alt="شعار أواني العربية" class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16">
+                <div>
+                    <!-- Name (Arabic): Adjusted size to match English height -->
+                    <h1 id="brandNameAr" class="text-xl sm:text-2xl font-bold highlight-text tajawal-font" style="font-size: 1.25rem;">أواني العربية</h1>
+                    <!-- Name (English): Font weight increased to 900 for boldness -->
+                    <p id="brandNameEn" class="text-base sm:text-lg mt-1 text-gray-700 english-font" style="font-weight: 900; line-height: 1.25; font-size: 1.05rem;">Arabian Household</p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="hero" class="text-center py-20 md:py-32 px-4 hero-bg">
+                <h2 id="heroTitle" class="text-4xl md:text-6xl lg:text-7xl font-bold highlight-text amiri-font max-w-4xl mx-auto">
+                    من أدوات المطبخ إلى تفاصيل الطاولة... كل ما تحتاجه في مكان واحد.
+                </h2>
+            </section>
+            
+            <section id="features" class="py-16 md:py-20 text-gray-800">
+                <div class="container mx-auto px-4 max-w-4xl">
+                    <h3 id="featuresTitle" class="text-3xl font-bold text-center mb-12 highlight-text tajawal-font">لماذا تختارنا؟</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="feature-card text-center p-6 rounded-xl shadow-lg">
+                            <div class="text-5xl mb-4 brand-text">💰</div>
+                            <h4 id="feature1Title" class="text-xl font-bold mb-2 highlight-text tajawal-font">أسعار تنافسية</h4>
+                            <p id="feature1Text" class="text-gray-700">نقدم أفضل الأسعار في السوق مع الحفاظ على الجودة العالية لمنتجاتنا.</p>
+                        </div>
+                        <div class="feature-card text-center p-6 rounded-xl shadow-lg">
+                            <div class="text-5xl mb-4 brand-text">🏢</div>
+                            <h4 id="feature2Title" class="text-xl font-bold mb-2 highlight-text tajawal-font">عروض خاصة للشركات</h4>
+                            <p id="feature2Text" class="text-gray-700">باقات وعروض مصممة خصيصًا لتلبية احتياجات الشركات والمطاعم.</p>
+                        </div>
+                        <div class="feature-card text-center p-6 rounded-xl shadow-lg">
+                            <div class="text-5xl mb-4 brand-text">🛡️</div>
+                            <h4 id="feature3Title" class="text-xl font-bold mb-2 highlight-text tajawal-font">ضمان من المحل</h4>
+                            <p id="feature3Text" class="text-gray-700">استمتع بضمان مباشر من "أواني العربية"، لخدمة أسرع وأكثر موثوقية.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Section: Product Categories Button -->
+            <section id="categories-button" class="py-16 md:py-20 bg-[#F5F5DC]">
+                <div class="container mx-auto px-4 text-center">
+                    <button id="openCategoriesModal" class="px-12 py-6 bg-yellow-600 text-white rounded-full text-2xl font-bold shadow-lg hover:bg-opacity-90 transition-all glow-gold amiri-font" style="background-color: #C2A14D;">
+                        <span id="exploreBtnText">اكتشف تشكيلتنا من الأواني المنزلية</span>
+                    </button>
+                </div>
+            </section>
+            
+            <section id="interactive-ideas" class="py-16 md:py-20">
+                <div class="container mx-auto px-4 text-center">
+                    <h3 id="ideasTitle" class="text-3xl font-bold mb-4 highlight-text tajawal-font">✨ اقتراحات وأفكار ✨</h3>
+                    <p id="ideasText" class="max-w-2xl mx-auto mb-8 text-gray-700">
+                        اضغط على الزر للتواصل معنا مباشرة بخصوص أي استفسارات أو أفكار لديك.
+                    </p>
+                    <a id="ideasLink" href="mailto:fathey2016@gmail.com" class="px-8 py-4 bg-yellow-600 text-white rounded-full text-lg font-bold shadow-lg hover:bg-yellow-700 transition-all tajawal-font" style="background-color: #C2A14D;">
+                        <span id="ideasLinkText">الاقتراحات والافكار</span>
+                    </a>
+                </div>
+            </section>
+
+            <section id="special-offers" class="py-16 md:py-20">
+                <div class="container mx-auto px-4 text-center">
+                    <h3 id="offersTitle" class="text-3xl font-bold text-center mb-8 highlight-text tajawal-font">اكتشف عروضنا الخاصة</h3>
+                    <p id="offersText" class="max-w-2xl mx-auto text-gray-700 mb-12">
+                        سواء كنتم شركة تبحثون عن تجهيزات لمناسباتكم أو مطعماً يسعى للتميز، لدينا ما يناسبكم. اختر الفئة لمعرفة المزيد.
+                    </p>
+                    <div class="flex justify-center mb-8 border-b-2 border-gray-300">
+                        <button class="tab-button active py-3 px-8 text-lg font-semibold tajawal-font" data-tab="companies" id="tabCompanies">للشركات والمؤسسات</button>
+                        <button class="tab-button py-3 px-8 text-lg font-semibold tajawal-font" data-tab="restaurants" id="tabRestaurants">للمطاعم والمقاهي</button>
+                    </div>
+                    <div id="tab-content" class="bg-white p-6 rounded-lg shadow-inner border border-gray-200">
+                        <div id="companies" class="tab-pane active">
+                            <h4 id="companiesTitle" class="text-2xl font-bold mb-4 brand-text tajawal-font">تجهيزات متكاملة لشركتكم</h4>
+                            <p id="companiesText" class="max-w-xl mx-auto text-gray-700">
+                                نقدم حلولاً متكاملة لتجهيز مطابخ الشركات وغرف الاستراحة بأطقم فاخرة من أواني التقديم والقهوة. خصومات خاصة على الكميات وبرامج توريد مرنة تناسب ميزانيتكم.
+                            </p>
+                        </div>
+                        <div id="restaurants" class="tab-pane hidden">
+                             <h4 id="restaurantsTitle" class="text-2xl font-bold mb-4 brand-text tajawal-font">أوانٍ تليق بمطعمكم</h4>
+                            <p id="restaurantsText" class="max-w-xl mx-auto text-gray-700">
+                                عزز تجربة ضيوفك بمجموعة مختارة من أواني الطهي والتقديم الاحترافية. متانة وجودة عالية تلبي معايير المطاعم الفاخرة، مع عروض حصرية على الطلبات الكبيرة وعقود التوريد السنوية.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="text-center py-10 hero-bg border-t border-gray-300">
+            <div class="container mx-auto px-4">
+                <h3 id="contactTitle" class="text-2xl font-bold mb-6 highlight-text tajawal-font">تواصل معنا</h3>
+                
+                <!-- Main Contact Links -->
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-lg mb-6 text-gray-700">
+                    <a id="telLink" href="tel:+966559999659" class="hover:text-yellow-600 transition-colors flex items-center gap-2">
+                        📞 +966559999659
+                    </a>
+                    <a id="whatsappLink" href="https://wa.me/966559999659" class="hover:text-yellow-600 transition-colors flex items-center gap-2" target="_blank">
+                        📱 <span id="whatsappText">واتساب</span>
+                    </a>
+                    <a id="mapLink" href="https://maps.app.goo.gl/rGe8tC2SSZpxpPkW6?g_st=ipc" class="hover:text-yellow-600 transition-colors flex items-center gap-2" target="_blank">
+                        📍 <span id="mapText">تفضل بزيارتنا</span>
+                    </a>
+                </div>
+
                 <!-- Social Media Links and Language Toggle -->
-                <div class="flex items-center justify-center gap-6 text-2xl mb-8">
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-2xl mb-8">
-                    <a href="https://www.tiktok.com/@arabianhouseholdco?_t=ZS-8zpAUAbzsEj&_r=1" class="hover:opacity-75 transition-opacity" target="_blank">
                     <!-- Social Media -->
-                        <img src="https://i.ibb.co/cKtfMBMM/tiktok-icon.png" alt="أيقونة تيك توك" class="w-8 h-8">
                     <div class="flex items-center justify-center gap-6 text-2xl">
-                    </a>
                         <a href="https://www.tiktok.com/@arabianhouseholdco?_t=ZS-8zpAUAbzsEj&_r=1" class="hover:opacity-75 transition-opacity" target="_blank">
-                    <a href="https://snapchat.com/t/NssVpFfb" class="hover:opacity-75 transition-opacity" target="_blank">
                             <img src="https://i.ibb.co/cKtfMBMM/tiktok-icon.png" alt="أيقونة تيك توك" class="w-8 h-8">
-                        <span class="text-3xl brand-text">👻</span>
                         </a>
-                    </a>
                         <a href="https://snapchat.com/t/NssVpFfb" class="hover:opacity-75 transition-opacity" target="_blank">
                             <span class="text-3xl brand-text">👻</span>
                         </a>
                     </div>
-                 </div>
-                 </div>
- 
- 
-                 <!-- Brand Info in Footer -->
-                 <!-- Brand Info in Footer -->
- @@ -726,7 +730,7 @@ <h4 id="gallery-title" class="text-xl font-bold brand-text tajawal-font mb-4">أ
-         const countdownDate = new Date("Sep 30, 2025 00:00:00").getTime();
-         const countdownDate = new Date("Sep 30, 2025 00:00:00").getTime();
- 
- 
-         const countdownFunction = setInterval(function() {
-         const countdownFunction = setInterval(function() {
-            // Placeholder logic to prevent error in current structure
+                </div>
+
+                <!-- Brand Info in Footer -->
+                <div class="flex items-center justify-center mt-6 gap-4">
+                    <img src="https://i.ibb.co/8D6KhP8C/5486-logo.png" alt="شعار أواني العربية" class="w-16 md:w-20">
+                    <div>
+                        <p id="footerBrandNameAr" class="text-xl md:text-2xl font-bold highlight-text tajawal-font" style="font-size: 1.125rem;">أواني العربية</p>
+                        <p id="footerBrandNameEn" class="text-base md:text-lg mt-1 text-gray-700 english-font">Arabian Household</p>
+                    </div>
+                </div>
+                <p id="footerSlogan" class="text-gray-600 mt-2">راحتك تبدأ من مطبخك</p>
+                <div id="footerCopy" class="mt-4 text-xs text-gray-500">
+                    جميع الحقوق محفوظة © 2025
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    
+    <!-- Product Categories Modal (Hidden by default) -->
+    <div id="categoriesModal" class="modal-overlay hidden">
+        <div class="modal-content w-full max-w-4xl">
+            <button id="closeCategoriesModal" class="absolute top-4 left-4 text-3xl font-bold text-gray-500 hover:text-red-500 transition-colors">
+                &times;
+            </button>
+            <h3 id="modalTitle" class="text-3xl font-bold text-center mb-8 highlight-text tajawal-font">معرض فئات المنتجات</h3>
+
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Category Navigation List (Right/Top on mobile) -->
+                <div class="category-nav p-2">
+                    <p id="navPrompt" class="text-sm font-semibold mb-2 text-center md:text-right text-gray-600">اختر فئة:</p>
+                    <div id="category-list">
+                        <!-- Navigation items generated by JS -->
+                    </div>
+                </div>
+
+                <!-- Product Gallery (Left/Bottom on mobile) -->
+                <div id="product-gallery-container" class="flex-grow">
+                    <h4 id="gallery-title" class="text-xl font-bold brand-text tajawal-font mb-4">أطقم المطبخ</h4>
+                    <div id="product-gallery" class="product-gallery">
+                        <!-- Product images generated by JS -->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. DATA STRUCTURES (must be global) ---
+        
+        const categoriesData = {
+            'اطقم-المطبخ': {
+                name: 'أطقم المطبخ',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/29/10/850736139.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/10/298268906.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/10/310067257.jpg'
+                ]
+            },
+            'اطقم-تقديم-ضيافة': {
+                name: 'أطقم تقديم ضيافة شاي وقهوة',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/29/10/146832239.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/10/942043881.png', 
+                    'https://www2.0zz0.com/2025/09/29/10/192307812.png'
+                ]
+            },
+            'ترامس-القهوة': {
+                name: 'ترامس القهوة',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/29/10/934661912.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/10/635300301.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/10/877989113.jpg',
+                    'https://www2.0zz0.com/2025/09/29/10/847858871.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/10/921695066.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/10/329537575.jpg',
+                    'https://www2.0zz0.com/2025/09/29/10/945135059.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/10/333009614.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/10/647498558.png', 
+                    'https://www2.0zz0.com/2025/09/29/10/337030469.png'
+                ]
+            },
+            'الاجهزة-الصغيرة': {
+                name: 'الأجهزة الصغيرة للمطبخ',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/30/11/480969353.png', /* New image */
+                    'https://www2.0zz0.com/2025/09/29/10/719803559.jpg',
+                    'https://www2.0zz0.com/2025/09/29/10/938516519.jpg',
+                    'https://www2.0zz0.com/2025/09/29/10/699957071.jpg',
+                    'https://www2.0zz0.com/2025/09/29/10/362868077.png',
+                    'https://www2.0zz0.com/2025/09/29/10/519730578.png',
+                    'https://www2.0zz0.com/2025/09/29/10/192832103.png',
+                    'https://www2.0zz0.com/2025/09/29/10/891220009.png',
+                    'https://www2.0zz0.com/2025/09/29/10/373484212.png',
+                    'https://www2.0zz0.com/2025/09/29/10/148522920.png',
+                    'https://www2.0zz0.com/2025/09/29/10/637282999.png'
+                ]
+            },
+            'قدور-وعجانات': {
+                name: 'قدور الطبخ و العجانات',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/29/10/821107742.png',
+                    'https://www2.0zz0.com/2025/09/29/10/931900515.png',
+                    'https://www2.0zz0.com/2025/09/29/10/103973065.png',
+                    'https://www2.0zz0.com/2025/09/29/10/538104060.png',
+                    'https://www2.0zz0.com/2025/09/29/10/790715274.png',
+                    'https://www2.0zz0.com/2025/09/29/10/255329003.png'
+                ]
+            },
+            'اواني-وقوالب-كيك': {
+                name: 'أواني طبخ وقوالب كيك',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/29/10/791591353.jpg',
+                    'https://www2.0zz0.com/2025/09/29/10/819214607.png',
+                    'https://www2.0zz0.com/2025/09/29/10/787546767.png',
+                    'https://www2.0zz0.com/2025/09/29/10/695954332.png',
+                    'https://www2.0zz0.com/2025/09/29/10/156465382.png',
+                    'https://www2.0zz0.com/2025/09/29/10/444595289.png',
+                    'https://www2.0zz0.com/2025/09/29/10/217532566.png',
+                    'https://www2.0zz0.com/2025/09/29/10/581203038.png',
+                    'https://www2.0zz0.com/2025/09/29/10/623378407.png',
+                    'https://www2.0zz0.com/2025/09/29/10/339335413.png',
+                    'https://www2.0zz0.com/2025/09/29/10/372619929.png',
+                    'https://www2.0zz0.com/2025/09/29/10/198891704.png',
+                    'https://www2.0zz0.com/2025/09/29/10/337389833.png',
+                    'https://www2.0zz0.com/2025/09/29/10/236464996.png',
+                    'https://www2.0zz0.com/2025/09/29/10/607814461.png',
+                    'https://www2.0zz0.com/2025/09/29/10/371373594.png',
+                    'https://www2.0zz0.com/2025/09/29/10/251944306.png',
+                    'https://www2.0zz0.com/2025/09/29/10/488825445.png',
+                    'https://www2.0zz0.com/2025/09/29/11/667691122.png',
+                    'https://www2.0zz0.com/2025/09/29/11/974290199.png',
+                    'https://www2.0zz0.com/2025/09/29/11/416035066.png',
+                    'https://www2.0zz0.com/2025/09/29/11/875969288.png'
+                ]
+            },
+            'طاوات-الطبخ': {
+                name: 'طاوات الطبخ',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/29/11/829358627.jpg',
+                    'https://www2.0zz0.com/2025/09/29/11/750391740.jpg',
+                    'https://www2.0zz0.com/2025/09/29/11/912504025.jpg',
+                    'https://www2.0zz0.com/2025/09/29/11/573143621.png',
+                    'https://www2.0zz0.com/2025/09/29/11/549304925.png',
+                    'https://www2.0zz0.com/2025/09/29/11/158280057.png',
+                    'https://www2.0zz0.com/2025/09/29/11/722206699.png',
+                    'https://www2.0zz0.com/2025/09/29/11/692353351.png',
+                    'https://www2.0zz0.com/2025/09/29/11/960999544.png',
+                    'https://www2.0zz0.com/2025/09/29/11/109592927.png',
+                    'https://www2.0zz0.com/2025/09/29/11/415353800.png',
+                    'https://www2.0zz0.com/2025/09/29/11/251766428.png',
+                    'https://www2.0zz0.com/2025/09/29/11/571378880.png',
+                    'https://www2.0zz0.com/2025/09/29/11/134303387.png',
+                    'https://www2.0zz0.com/2025/09/29/11/973561583.png',
+                    'https://www2.0zz0.com/2025/09/29/11/709817688.png',
+                    'https://www2.0zz0.com/2025/09/29/11/932370225.png',
+                    'https://www2.0zz0.com/2025/09/29/11/739148575.png',
+                    'https://www2.0zz0.com/2025/09/29/11/899410290.png',
+                    'https://www2.0zz0.com/2025/09/29/11/536785044.png',
+                    'https://www2.0zz0.com/2025/09/29/11/122083560.png',
+                    'https://www2.0zz0.com/2025/09/29/11/272160816.png'
+                ]
+            },
+            'غلايات-وعصارات': {
+                name: 'غلايات الماء وعصارة الفواكة الكهربائية',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/29/11/628277598.png',
+                    'https://www2.0zz0.com/2025/09/29/11/523944009.png',
+                    'https://www2.0zz0.com/2025/09/29/11/809543849.png',
+                    'https://www2.0zz0.com/2025/09/29/11/654635137.png',
+                    'https://www2.0zz0.com/2025/09/29/11/664638428.png',
+                    'https://www2.0zz0.com/2025/09/29/11/331173668.png',
+                    'https://www2.0zz0.com/2025/09/29/11/304422327.png',
+                    'https://www2.0zz0.com/2025/09/29/11/414219730.png',
+                    'https://www2.0zz0.com/2025/09/29/11/879391520.png',
+                    'https://www2.0zz0.com/2025/09/29/11/914417095.png',
+                    'https://www2.0zz0.com/2025/09/29/11/359484018.png',
+                    'https://www2.0zz0.com/2025/09/29/11/173594280.png',
+                    'https://www2.0zz0.com/2025/09/29/11/743589374.png'
+                ]
+            },
+            'ماكينات-القهوة': {
+                name: 'ماكينات القهوة',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/29/11/633777837.jpg', 
+                    'https://www2.0zz0.com/2025/09/29/11/792243350.png', 
+                    'https://www2.0zz0.com/2025/09/29/11/619959411.png', 
+                    'https://www2.0zz0.com/2025/09/29/11/952677258.png'
+                ]
+            },
+            'اساسيات-الراحة': {
+                name: 'أساسيات الراحة المنزلية',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/30/11/222244547.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/638519557.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/449715883.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/473796162.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/260120432.png',  
+                    'https://www2.0zz0.com/2025/09/30/11/804078657.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/941867622.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/559857340.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/260473498.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/469266294.png'
+                ]
+            },
+            'حافظات-الطعام': {
+                name: 'حافظات الطعام',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/30/11/399417572.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/717276468.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/956783009.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/670837672.png',  
+                    'https://www2.0zz0.com/2025/09/30/11/419324172.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/666291406.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/145968874.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/539847183.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/311400271.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/723019849.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/369741895.png'
+                ]
+            },
+            'اجهزة-تبريد': {
+                name: 'أجهزة وبرادات المياة',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/30/11/741742554.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/231576059.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/764269549.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/639505349.png'
+                ]
+            },
+            'مواقد-المطبخ': {
+                name: 'مواقد المطبخ',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/30/11/515257127.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/372333527.png',  
+                    'https://www2.0zz0.com/2025/09/30/11/172698537.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/314694122.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/299275386.png'
+                ]
+            },
+            'مصافي-المطبخ': {
+                name: 'مصافي المطبخ',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/30/11/341479321.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/438251529.png',  
+                    'https://www2.0zz0.com/2025/09/30/11/985748731.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/255800252.png'     
+                ]
+            },
+            'حاويات-النفايات': {
+                name: 'حاويات النفايات',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/30/11/705470574.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/731543532.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/448113147.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/823378917.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/896516853.png',
+                    'https://www2.0zz0.com/2025/09/30/11/289376938.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/151795902.png'
+                ]
+            },
+            'موازين-رقمية': {
+                name: 'الموازين الرقمية',
+                url: '#',
+                images: [
+                    'https://www2.0zz0.com/2025/09/30/11/819518725.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/191099044.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/612334116.png', 
+                    'https://www2.0zz0.com/2025/09/30/11/923287210.png',  
+                    'https://www2.0zz0.com/2025/09/30/11/749541212.png'
+                ]
+            }
+        };
+
+        // Function to render the category navigation links
+        const renderCategoryList = () => {
+            const listContainer = document.getElementById('category-list');
+            listContainer.innerHTML = '';
+            
+            Object.keys(categoriesData).forEach(key => {
+                const item = categoriesData[key];
+                const button = document.createElement('div');
+                button.className = 'category-nav-item';
+                button.dataset.category = key;
+                button.textContent = item.name; 
+                
+                button.addEventListener('click', () => {
+                    updateProductGallery(key);
+                    // Update active state in navigation
+                    document.querySelectorAll('.category-nav-item').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // **FIX: Scroll the category navigation list to show the selected item at the top**
+                    const navContainer = document.querySelector('.category-nav');
+                    if (navContainer) {
+                        navContainer.scrollTop = button.offsetTop - navContainer.offsetTop; 
+                    }
+                });
+                
+                listContainer.appendChild(button);
+            });
+            
+            // Set the first item as active by default
+            const firstButton = listContainer.querySelector('.category-nav-item');
+            if (firstButton) {
+                firstButton.classList.add('active');
+            }
+        };
+
+        // Function to update the product image gallery
+        const updateProductGallery = (categoryKey) => {
+            const galleryContainer = document.getElementById('product-gallery');
+            const titleElement = document.getElementById('gallery-title');
+            const data = categoriesData[categoryKey];
+            
+            if (!data) return;
+
+            // Update title
+            titleElement.textContent = data.name;
+
+            // Clear existing images
+            galleryContainer.innerHTML = '';
+            
+            // Render images
+            if (data.images.length === 0) {
+                 const notFoundMessage = document.createElement('p');
+                 notFoundMessage.className = 'col-span-2 text-center text-gray-500 mt-4';
+                 notFoundMessage.textContent = 'لا توجد صور متوفرة لهذه الفئة حالياً.';
+                 galleryContainer.appendChild(notFoundMessage);
+            } else {
+                data.images.forEach((imageUrl) => {
+                    const image = document.createElement('img');
+                    image.src = imageUrl;
+                    image.alt = `منتج من فئة ${data.name}`;
+                    image.className = 'product-image cursor-default'; 
+                    galleryContainer.appendChild(image);
+                });
+            }
+            
+            // **FINAL FIX: Ensure product gallery scrolls to the top using requestAnimationFrame (Most reliable)**
+            const scrollContainer = document.getElementById('product-gallery-container');
+            window.requestAnimationFrame(() => {
+                scrollContainer.scrollTop = 0;
+            });
+        };
+
+        // --- 2. COUNTDOWN TIMER (Placeholder for consistency) ---
+        const countdownDate = new Date("Sep 30, 2025 00:00:00").getTime();
+
+        const countdownFunction = setInterval(function() {
             // (Countdown logic removed for simplicity as it was unrelated to the current error)
-             const daysEl = document.getElementById("days");
-             const daysEl = document.getElementById("days");
-             const hoursEl = document.getElementById("hours");
-             const hoursEl = document.getElementById("hours");
-             const minutesEl = document.getElementById("minutes");
-             const minutesEl = document.getElementById("minutes");
-Editing Arabian-Household-TRADING-CO./index.html at main · ARABIANHOUHSE/Arabian-Household-TRADING-CO.
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
+            
+            if(daysEl) daysEl.innerText = "00";
+            if(hoursEl) hoursEl.innerText = "00";
+            if(minutesEl) minutesEl.innerText = "00";
+            if(secondsEl) secondsEl.innerText = "00";
+        }, 1000);
+
+        // --- 3. TAB FUNCTIONALITY ---
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(item => item.classList.remove('active', 'text-gray-50'));
+                    tabs.forEach(item => {
+                        if (!item.classList.contains('active')) {
+                            item.classList.add('text-gray-600');
+                        }
+                    });
+
+                    tab.classList.add('active', 'font-bold');
+                    tab.classList.remove('text-gray-600');
+
+                    tabPanes.forEach(pane => {
+                        pane.classList.add('hidden');
+                    });
+                    
+                    const targetPane = document.getElementById(tab.dataset.tab);
+                    if(targetPane) {
+                        targetPane.classList.remove('hidden');
+                    }
+                });
+            });
+
+            // Modal open/close logic
+            const categoriesModal = document.getElementById('categoriesModal');
+            document.getElementById('openCategoriesModal').addEventListener('click', () => {
+                categoriesModal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden'); // Prevent body scroll
+                
+                renderCategoryList();
+                // Load default gallery content (first category)
+                const defaultCategoryKey = Object.keys(categoriesData)[0];
+                updateProductGallery(defaultCategoryKey);
+                
+                // **Scroll the product gallery to the top when the modal opens**
+                const scrollContainer = document.getElementById('product-gallery-container');
+                scrollContainer.scrollTop = 0;
+            });
+
+            document.getElementById('closeCategoriesModal').addEventListener('click', () => {
+                categoriesModal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            });
+            
+            // Close modal when clicking outside (on overlay)
+            categoriesModal.addEventListener('click', (e) => {
+                if (e.target === categoriesModal) {
+                    categoriesModal.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+
+            // Initial content load
+            renderCategoryList();
+            updateProductGallery(Object.keys(categoriesData)[0]);
+        });
+    </script>
+</body>
+</html>
